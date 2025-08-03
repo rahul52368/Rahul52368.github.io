@@ -1,0 +1,6 @@
+remote_theme: pages-themes/midnight@v0.2.0
+plugins:
+- jekyll-remote-theme # add this line to the plugins list if you already have one
+title: Website/Portfolio
+description: Experienced Placement Coordinator with a demonstrated history of working in research market. Skilled in Data Analysis, Data munging, Machine learning, Text mining, Visualisation, Python, R and Public Speaking. Strong community and social service professional with a Master’s Degree focused in Economics from Ambedkar University Delhi.
+Considered as data scientist, who is proficient at implementing machine learning models, with R and python.
