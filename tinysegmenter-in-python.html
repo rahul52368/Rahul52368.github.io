@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5WPYHRNWZE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-5WPYHRNWZE');
+</script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <meta name="author" content="Masato Hagiwara">
+
+    <meta property="og:site_name" content="Masato Hagiwara's Page"/>
+    <meta property="og:title" content="TinySegmenter in Python"/>
+    
+    <meta property="og:locale" content="en_US"/>
+    <meta property="og:url" content="http://masatohagiwara.net/tinysegmenter-in-python.html"/>
+    <meta property="og:type" content="article"/>
+    
+
+    <title>TinySegmenter in Python</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="vendor/devicons/css/devicons.min.css" rel="stylesheet">
+    <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/resume.css" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/default.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+  </head>
+
+  <body id="page-top">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+  <a class="navbar-brand js-scroll-trigger" href="/#page-top">
+    <span class="d-block d-lg-none">Masato Hagiwara's Page</span>
+    <span class="d-none d-lg-block">
+      <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="img/profile.jpg" alt="">
+    </span>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="/#about">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="/#projects">Projects</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="/#experience">Experience</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="/#education">Education</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="/#publications">Publications</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="/#press">Press</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="/#blog">Blog</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+    <div class="container-fluid p-0">
+         <section class="resume-section p-3 p-lg-5 d-flex d-column">
+             <div class="my-auto">
+                 <h1>TinySegmenter in Python</h1>
+
+<h2>What is this?</h2>
+
+<p>"TinySegmenter in Python" is a Python re-implementation of <a href="http://chasen.org/~taku/software/TinySegmenter/">TinySegmenter</a>, which is an extremely compact (23KB) Japanese tokenizer originally written in JavaScript by Mr. Taku Kudo. It works on Python 2.5 or above.</p>
+
+<p>The interface of "TinySegmenter in Python" is compatible with <a href="http://www.nltk.org/">NLTK</a>'s TokenizerI, although the distribution file below does not directly depend on NLTK. If you'd like to use it as a tokenizer in NLTK, you have to modify the first few lines of the code as below:</p>
+
+<pre><code>import nltk
+import re
+from nltk.tokenize.api import *
+
+class TinySegmenter(TokenizerI):
+</code></pre>
+
+<h2>Download and Usage</h2>
+
+<p>Download the source code from <a href="https://github.com/mhagiwara/nltk/blob/master/jpbook/tinysegmenter.py">here</a>. TinySegmenter in Python is freely distributable under the terms of a new BSD license. </p></p>
+
+<p>No need to install it - just copy it anywhere, import it, and use it as the follow example:</p>
+
+<pre><code>from tinysegmenter import *
+
+segmenter = TinySegmenter()
+print ' | '.join(segmenter.tokenize(u"私の名前は中野です"))
+
+私 | の | 名前 | は | 中野 | です
+</code></pre>
+
+<h3>Features (from the original TinySegmenter)</h3>
+
+<ul>
+<li>Around 95% segmentation precision for Japanese news articles.</li>
+<li>Segmentation units are compatible with <a href="http://taku910.github.io/mecab/">MeCab + IPADic</a></li>
+<li>Only 23KB of source code. Just copy it anywhere and no other things are required.</li>
+<li>No dependency on any dictionaries - character-based segmentation (Features: character, character N-grams, character types).</li>
+<li>Feature selection by L1-norm regularization <a href="http://en.wikipedia.org/wiki/AdaBoost">Boosting</a>.</li>
+</ul>
+
+<h3>A Better Alternative</h3>
+
+<p>If you are interested in more accurate analysis of Japanese and Chinese text in JavaScript,  check out my other open source project <a href="https://github.com/rakuten-nlp/rakutenma">Rakuten MA</a>, which is an open source morphological analyzer written in 100% JavaScript, supporting PoS tagging in Japanese and Chinese.</p>
+
+<h3>Acknowledgment</h3>
+
+<p>I thank Mr. Kudo for his effort on this kind of wonderful software.</p>
+
+             </div>
+         </section>
+    </div>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/resume.min.js"></script>
+
+  </body>
+
+</html>

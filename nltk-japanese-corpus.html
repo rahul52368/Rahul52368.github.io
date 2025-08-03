@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5WPYHRNWZE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-5WPYHRNWZE');
+</script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <meta name="author" content="Masato Hagiwara">
+
+    <meta property="og:site_name" content="Masato Hagiwara's Page"/>
+    <meta property="og:title" content="NLTK Japanese Corpora - NLTKで使える日本語コーパス"/>
+    
+    <meta property="og:locale" content="en_US"/>
+    <meta property="og:url" content="http://masatohagiwara.net/nltk-japanese-corpus.html"/>
+    <meta property="og:type" content="article"/>
+    
+
+    <title>NLTK Japanese Corpora - NLTKで使える日本語コーパス</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="vendor/devicons/css/devicons.min.css" rel="stylesheet">
+    <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/resume.css" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/default.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+  </head>
+
+  <body id="page-top">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+  <a class="navbar-brand js-scroll-trigger" href="/#page-top">
+    <span class="d-block d-lg-none">Masato Hagiwara's Page</span>
+    <span class="d-none d-lg-block">
+      <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="img/profile.jpg" alt="">
+    </span>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="/#about">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="/#projects">Projects</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="/#experience">Experience</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="/#education">Education</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="/#publications">Publications</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="/#press">Press</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="/#blog">Blog</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+    <div class="container-fluid p-0">
+         <section class="resume-section p-3 p-lg-5 d-flex d-column">
+             <div class="my-auto">
+                 <h1>NLTK Japanese Corpora - NLTKで使える日本語コーパス</h1>
+
+<p>NLTK (Natural Language Toolkit) is an excellent toolkit which you can use for natural language processing and text mining experiments and learning. Unfortunately it doesn't include Japanese large corpora and this makes it relatively difficult to try some experiments using Japanese linguistic resources. Here I introduce two Japanese freely available corpora, along with their corpus reader modules. By using corpus readers, you can easily access the corpora with the unified interface.</p>
+
+<p>NLTK (Natural Language Toolkit) は、自然言語処理やテキストマイニングの実験や実習用の素晴らしツールキットですが、残念ながら現時点で日本語の大規模コーパスが含まれておらず、日本語の言語資源を用いた実験を気軽に試すハードルが高くなってしまっています。ここでは、自由に利用可能な日本語のコーパスを２つ紹介し、それらに対応した CorpusReader を配布しています。これによって、他のコーパスと同様のインターフェースによって簡単にコーパスにアクセスできるようになります。</p>
+
+<h2>1. KNB Corpus (Annotated blog corpus) KNB (解析済みブログ)コーパス</h2>
+
+<h3>Corpus Introduction - コーパスについて</h3>
+
+<p>KNB Corpus is a re-distributable, annotated Japanese blog corpus, which consists of 249 articles and 4186 sentences. Its annotation includes morphology, dependency, case, omission, anaphora, and review information.</p>
+
+<p>KNB コーパスは、再配布可能な日本語タグ付きブログコーパスで、249記事、4,189文から成ります。形態素、構文、格・省略・照応、評判情報を含んでいます。</p>
+
+<h3>Download and Usage - ダウンロードおよび使用法</h3>
+
+<p>First, download the <a href="http://nlp.ist.i.kyoto-u.ac.jp/kuntt/#ga739fe2">KNB corpus</a> distribution file from here:  <a href="http://nlp.ist.i.kyoto-u.ac.jp/kuntt/KNBC_v1.0_090925.tar.bz2">解析済みブログコーパス (KNBC<em>v1.0</em>090925.tar.bz2; 4.2MB)</a>, and put the decompressed files under NLTK's data directly (nltk_data by default).</p>
+
+<p>まず <a href="http://nlp.ist.i.kyoto-u.ac.jp/kuntt/#ga739fe2">KNB コーパス</a> の配布ファイルをこちらからダウンロードしてください: <a href="http://nlp.ist.i.kyoto-u.ac.jp/kuntt/KNBC_v1.0_090925.tar.bz2">解析済みブログコーパス (KNBC<em>v1.0</em>090925.tar.bz2; 4.2MB)</a>。 ファイルを解凍し、NLTKのデータディレクトリ (デフォルトでは nltk_data) の下に置いてください。</p>
+
+<p>Next, download the source code of the corpus reader from here: <a href="https://github.com/mhagiwara/nltk/blob/master/jpbook/knbc.py">knbc.py</a>. KNB Corpus reader is distributed under the same license as NLTK itself (<a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>).</p>
+
+<p>次に、コーパスリーダーのソースコードを <a href="https://github.com/mhagiwara/nltk/blob/master/jpbook/knbc.py">knbc.py</a> からダウンロードしてください。 このコーパスリーダーは、NLTK と同じライセンス (<a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>) の元で再配布可能です。</p></p>
+
+<p>For the basic usage, please refer to the demo() function in the source file. Firstly, you can find the data directory where you put the files by nltk.data.find() and then list up all the corpus files as fileids:</p>
+
+<p>基本的な使い方については、ソースコードの demo() 関数を参照してください。まず、コーパスが格納されているディレクトリを nltk.data.find() によって取得し、コーパスを構成するファイルを fileids として列挙します:</p>
+
+<pre><code>root = nltk.data.find('corpora/knbc/corpus1')
+fileids = [f for f in find_corpus_fileids(FileSystemPathPointer(root), ".*")
+           if re.search(r"\d\-\d\-[\d]+\-[\d]+", f)]
+</code></pre>
+
+<p>Then you can sort fileids and pass all of them to the KNBCorpusReader constructor as below. All the fileids can be obtained by the corpus reader's fileids() method.</p>
+
+<p>次に、fileids を番号順にソートし、 KNBCorpusReader のコンストラクタにリストとして全て渡します。全ての fileid は、コーパスリーダーの fileids() メソッドによって取得できます。</p>
+
+<pre><code>def _knbc_fileids_sort(x):
+    cells = x.split('-')
+    return (cells[0], int(cells[1]), int(cells[2]), int(cells[3]))
+
+knbc = LazyCorpusLoader('knbc/corpus1', KNBCorpusReader,
+                        sorted(fileids, key=_knbc_fileids_sort), encoding='euc-jp')
+print knbc.fileids()
+-&gt; ['KN001_Keitai_1/KN001_Keitai_1-1-1-01',
+'KN001_Keitai_1/KN001_Keitai_1-1-2-01',
+'KN001_Keitai_1/KN001_Keitai_1-1-3-01',
+'KN001_Keitai_1/KN001_Keitai_1-1-4-01',
+'KN001_Keitai_1/KN001_Keitai_1-1-5-01', ...
+</code></pre>
+
+<p>Now you're ready to use the corpus. You can iterate over words by words() method:</p>
+
+<p>これで、コーパスを使う準備は整いました。全ての単語について繰り返すには words() メソッドを使います:</p>
+
+<pre><code>print ''.join(knbc.words()[:100])
+-&gt; ［携帯電話］プリペイドカード携帯布教。もはや’今さら’だが、という接頭句で
+始めるしかないほど今さらだが、私はプリペイド携帯をずっと使っている。犯罪に用い
+られるなどによりかなり...
+</code></pre>
+
+<p>You can also access dependency trees by parsed_sents() method:</p>
+
+<p>係り受け関係を表現した表現の木構造にアクセスするには、parsed_sents() を使います。</p>
+
+<pre><code>print '\n\n'.join('%s' % tree for tree in knbc.parsed_sents())
+-&gt; (布教/。
+     (電話/］ ［/携帯)
+     (携帯 (カード プリペイド)))
+
+   (使って/いる/。
+     (今さら/だ/が/、
+       (ほど
+         (始める/しか/ない
+           もはや
+           (接頭句/で (いう ’/今さら/’/だ/が/、/と)))))
+    私/は
+    (携帯/を プリペイド)
+    ずっと)
+</code></pre>
+
+<p>he tree representation can be customized by the morphs2str parameter of the KNBCorpusReader constructor, or you can directly access morphs2str variable:</p>
+
+<p>なお、木構造のノード表現の文字列は、 KNBCorpusReader のコンストラクタの morphs2str パラメータ、もしくは morphs2str メンバに直接アクセスすることによってカスタマイズできます。</p>
+
+<pre><code>knbc.morphs2str = lambda morphs: '/'.join("%s(%s)" % (m[0], m[1][2])
+    for m in morphs if m[0] != 'EOS').encode('utf-8')
+
+print '\n\n'.join('%s' % tree for tree in knbc.parsed_sents())
+-&gt; (布教(名詞)/。(特殊)
+       (電話(名詞)/］(特殊) ［(特殊)/携帯(名詞))
+       (携帯(名詞) (カード(名詞) プリペイド(名詞))))
+
+    (使って(動詞)/いる(接尾辞)/。(特殊)
+
+      (今さら(副詞)/だ(判定詞)/が(助詞)/、(特殊)
+        (ほど(名詞)
+          (始める(動詞)/しか(助詞)/ない(形容詞)
+            もはや(副詞)
+            (接頭句(名詞)/で(助詞)
+              (いう(動詞)
+
+                ’(特殊)/今さら(副詞)/’(特殊)/だ(判定詞)/が(助詞)/、(特殊)/と(助詞))))))
+      私(名詞)/は(助詞)
+      (携帯(名詞)/を(助詞) プリペイド(名詞))
+      ずっと(副詞))
+</code></pre>
+
+<h3>TO DO - 今後の予定</h3>
+
+<p>Currently the KNB corpus reader doesn't support other information except for morphology and dependency, such as case and anaphora.</p>
+
+<p>KNB コーパスリーダーは、現段階では、形態素情報と係り受け以外の情報、例えば格や照応の情報はサポートしていません。</p>
+
+<h3>Acknowledgement - 謝辞</h3>
+
+<p>I thank Mr. Steven Bird and other developers of NLTK. I also thank Prof. Sadao Kurohashi for allowing the redistribution of KNB Corpus for NLTK.</p>
+
+<p>Steven Bird さんをはじめ NLTK の開発者の皆さまに感謝します。また、NLTK 用に KNB コーパスの再配布を許可して下さった黒橋禎夫教授に特に感謝いたします。*</p>
+
+<h2>2. JEITA Public Morphologically Tagged Corpus (in ChaSen format) - JEITA 形態素解析済み コーパス (ChaSen 形式)</h2>
+
+<h3>About this corpus - 本コーパスについて</h3>
+
+<p>This corpus, JEITA Public Morphologically Tagged Corpus (in ChaSen format), is a public, automatically tagged (morphologically analyzed) corpus of <a href="http://www.genpaku.org/">Project Sugita Genpaku</a> and <a href="http://www.aozora.gr.jp/">Aozora Bunko</a>, which themselves are freely available text collections like Project Gutenberg. The corpus data was originally distributed as "JEITA Public Morphologically Tagged Corpus".</p>
+
+<p>本コーパス 「JEITA 形態素解析済みコーパス (ChaSen 形式)」は、<a href="http://www.genpaku.org/">プロジェクト杉田玄白</a> と<a href="http://www.aozora.gr.jp/">青空文庫</a> のテキストを自動で形態素解析した、フリーで利用可能なタグ付きコーパスです。本コーパスは、本来、「JEITA 形態素解析済みコーパス」として配布されていたデータに基づいています。</p>
+
+<p>However, the files included in this corpus are not the original distribution data of JEITA Public Morphologically Tagged Corpus but the ones which are converted into ChaSen's file formats for easier program access. For more information on the ChaSen morphological analyzer, you can refer to <a href="http://chasen-legacy.sourceforge.jp/">ChaSen's official site</a>.</p>
+
+<p>ただし、本コーパスに含まれているファイルは上記JEITA 形態素解析済みコーパスの配布データそのものではなく、プログラムからのアクセスを容易にするために ChaSen のファイル形式に変換してあります。ChaSen の詳細については<a href="http://chasen-legacy.sourceforge.jp/">ChaSen のオフィシャルサイト</a>を参考にしてください。</p>
+
+<h3>Access by NLTK (Natural Language Toolkit) Corpus Reader - NLTK のコーパスリーダーを使って読み込む</h3>
+
+<p>Since this corpus is in ChaSen's format, it can be easily accessed via ChaSen corpus reader for NLTK distributed here.</p>
+
+<p>本コーパスは ChaSen 形式であるため、ここで配布しているNLTK のための ChaSen コーパスリーダーを用いると簡単にアクセスできます。</p>
+
+<p>Firstly, download this corpus's distributed files, and decompress it under any directory (NLTK's data directly nltk_data is preferable)</p>
+
+<p>まず、以下の配布ファイルをダウンロードし、任意のディレクトリ (NLTK のデータディレクトリ nltk_data が標準)に解凍します。</p>
+
+<ul>
+<li><p>JEITA Public Morphologically Tagged Corpus (in ChaSen format) for Project Sugita Genpaku<br/>
+JEITA 形態素解析済みコーパス (ChaSen形式) プロジェクト杉田玄白<br/>
+(Morphologically Tagged by ChaSen + IPADic)<br/>
+(ChaSen と IPADic により形態素解析)<br/>
+<a href="/files/jeita_genpaku.tar.bz2">jeita_genpaku.tar.bz2, 3.86 MB</a></p></li>
+<li><p>JEITA Public Morphologically Tagged Corpus (in ChaSen format) for Aozora Bunko <br />
+JEITA 形態素解析済みコーパス (ChaSen形式) 青空文庫 <br />
+(Morphologically Tagged by ChaSen + IPADic) <br />
+(ChaSen と IPADic により形態素解析) <br />
+<a href="/files/jeita_aozora.tar.bz2">jeita_aozora.tar.bz2, 53.6 MB</a></p></li>
+</ul>
+
+<p>Next, the ChaSen corpus reader source file from here: <a href="https://github.com/mhagiwara/nltk/blob/master/jpbook/chasen.py">chasen.py</a>. ChaSen corpus reader is distributed under the same license as NLTK itself (<a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>).</p>
+
+<p>次に, ChaSen コーパスリーダーのソースコードを <a href="https://github.com/mhagiwara/nltk/blob/master/jpbook/chasen.py">chasen.py</a> からダウンロードしてください。このコーパスリーダーは、NLTK と同じライセンス (<a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>) の元で再配布可能です。</p>
+
+<p>Now you can specify the path to the corpus and filename(s) to read to construct a ChasenCorpusReader object. Multiple filenames can be specified as a list in the second parameter of the constructor.</p>
+
+<p>ここで、コーパスへのパスと、読み込むファイル名を指定して、ChasenCorpusReader のオブジェクトのコンストラクタを呼び出します。第２引数のファイル名の部分には、複数のファイル名をリストとして指定することができます。</p>
+
+<pre><code>&gt;&gt;&gt; from chasen_reader import *
+&gt;&gt;&gt; genpaku = ChasenCorpusReader('/path/to/corpus/jeita_genpaku',
+                                 '0014.chasen', encoding='utf-8')
+</code></pre>
+
+<p>The interface of ChaSen corpus reader is the same as the standard TaggedCorpusReader, which has raw() (returns raw strings), words() (list of words), sents() (list of sentences), paras() (list of paragraphs), tagged<em>words() (list of tagged words), tagged</em>sents() (list of tagged sentences), tagged_paras() (list of tagged paragraphs).</p>
+
+<p>ChaSen コーパスリーダーのインターフェースは、標準の TaggedCorpusReader と同じで、raw() (生の文字列を返す), words() (単語のリスト), sents() (文のリスト), paras() (パラグラフのリスト), tagged<em>words() (タグ付き単語のリスト), tagged</em>sents() (タグ付き文のリスト), tagged_paras() (タグ付きパラグラフのリスト) の各メソッドをサポートしています。</p>
+
+<pre><code>&gt;&gt;&gt; print '/'.join( genpaku.words()[0:40] )
+I/./　/心地よい/ランプ/の/明かり/に/照らさ/れ/た/書斎/を/行き/つ/戻り/つ/し/て
+/い/た/ヒューバート/・/グラニス/は/、/足/を/止め/て/、/暖炉/の/上/の/置き時計
+/と/腕時計/を/くらべ
+</code></pre>
+
+<p>Note that the tags (the second element of tuples returned by tagged<em>xxx methods) are themselves tuples, whose elements are readings, lemmas, pos1, pos2, and Katsuyou form.
+なお、タグ情報 (tagged</em>xxx メソッドで返されるタプルの第２要素) はそれ自体がタプルになっていて、読み, 原形, 品詞1, 品詞2, 活用形の情報が含まれます。</p>
+
+<pre><code>&gt;&gt;&gt; print '\nEOS\n'.join(['\n'.join("%s/%s" % (w[0],w[1][2]) for w in sent)
+                          for sent in genpaku.tagged_sents()[0:2]])
+I/記号-アルファベット
+./記号-句点
+
+EOS
+　/記号-空白
+心地よい/形容詞-自立
+ランプ/名詞-一般
+の/助詞-連体化
+明かり/名詞-一般
+
+に/助詞-格助詞-一般
+照らさ/動詞-自立
+れ/動詞-接尾
+た/助動詞
+...
+</code></pre>
+
+<p>By default, the sentence segmentation is done only by the "EOS" information given by ChaSen. Additional sentence segmentation function can be specified by the sent_splitter parameter of ChaSen Corpus reader.</p>
+
+<p>デフォルトでは、文分割は、ChaSen によって出力された "EOS" の情報のみを用いていますが、ChaSen コーパスリーダーのコンストラクタの sent_splitter によって、追加で文分割関数を指定することもできます。</p>
+
+<pre><code>&gt;&gt;&gt; genpaku = ChasenCorpusReader('/path/to/jeita/corpus',
+                                   '0014.chasen', encoding='utf-8',
+                                   sent_splitter=lambda w:w[0]==u'。')
+&gt;&gt;&gt; print '\n'.join([''.join(w for w in sent) for sent in sugita.sents()[2:4]])
+八時三分前。
+もう三分もすれば、著名な法律事務所アスカム・アンド・ペティローのピーター・
+カム弁護士が、時間きっかりにアパートの呼び鈴を押すことだろう。
+</code></pre>
+
+<h3>Acknowledgement - 謝辞</h3>
+
+<p>I thank the members of JEITA 言語資源分科会, especially the leader Prof. Hitoshi Isahara for allowing the conversion and redistributon of their Morphologically Tagged Corpus. I also thank the members of Project Sugita Genpaku and Aozora bunko, and the developers of ChaSen morphological analyzer.</p>
+
+<p>本コーパスの元となった JEITA 形態素解析済みコーパスの変換および再配布の許可をいただいたJEITA 言語資源分科会の皆さま、特に委員長の井佐原均教授に感謝いたします。また、プロジェクト杉田玄白・青空文庫の公開、そして ChaSen の開発に携わる皆さまに感謝いたします。</p>
+
+             </div>
+         </section>
+    </div>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/resume.min.js"></script>
+
+  </body>
+
+</html>
